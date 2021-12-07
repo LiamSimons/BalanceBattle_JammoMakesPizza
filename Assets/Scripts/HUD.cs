@@ -45,6 +45,18 @@ public class HUD : MonoBehaviour
         gameOverText.text = "G A M E  O V E R";
     }
 
+    public static void displayVictoryText()
+    {
+        gameOverText.text = "Y O U  W O N";
+    }
+
+    public static void Victory()
+    {
+        displayVictoryText();
+        playing = false;
+        gameOverTimer.Run();
+    }
+
     public static void loseHeart()
     {
         if(lives > 1)
