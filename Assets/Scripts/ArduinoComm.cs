@@ -37,7 +37,7 @@ public class ArduinoComm : MonoBehaviour
         int dataouttemp = (int) Bar.rotationBarFromHelmet*1000;
         ArduinoComm.DataOut = Encoding.ASCII.GetBytes(dataouttemp.ToString());
         Helmet.rotationHelmetFromWorld = Int32.Parse(Encoding.ASCII.GetString(ArduinoComm.DataIn)); //TODO: fix constants
-        Debug.Log(Helmet.rotationHelmetFromWorld);
+        //Debug.Log(Helmet.rotationHelmetFromWorld);
     }
     private static void StartReceive(int portNrRecv)
     {

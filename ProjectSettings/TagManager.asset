@@ -9,6 +9,8 @@ TagManager:
   - TextGameOver
   - Heart
   - Ground
+  - TVLevel
+  - TVPizza
   layers:
   - Default
   - TransparentFX

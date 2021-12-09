@@ -10,6 +10,8 @@ public class HUD : MonoBehaviour
 
     static Text scoreText;
     static Text gameOverText;
+    static Text tvLevelText;
+    static Text tvPizzaText;
     static float score = 0;
     
     private const int heartOffset = 30;
@@ -17,7 +19,7 @@ public class HUD : MonoBehaviour
     const int maxLives = 5;
     static int lives = maxLives;
 
-    public static bool playing = true;
+    public static bool playing = false;
 
     public static Timer gameOverTimer;
 
@@ -28,6 +30,8 @@ public class HUD : MonoBehaviour
         scoreText.text = score.ToString();
 
         gameOverText = GameObject.FindWithTag("TextGameOver").GetComponent<Text>();
+        tvLevelText = GameObject.FindWithTag("TVLevel").GetComponent<Text>();
+        tvPizzaText = GameObject.FindWithTag("TVPizza").GetComponent<Text>();
 
         resetHUD();
         //add score every 1 seconds
@@ -94,7 +98,7 @@ public class HUD : MonoBehaviour
     public void resetHUD()
     {
         lives = maxLives;
-        playing = true;
+        //playing = true;
         score = 0;
         for (int i = 0; i < lives; i++)
         {
@@ -104,5 +108,32 @@ public class HUD : MonoBehaviour
         }
         gameOverTimer = gameObject.AddComponent<Timer>();
         gameOverTimer.Duration = 3f;
+        UpdateTVLevelText();
+        UpdateTVPizzaText();
+    }
+
+    public static void UpdateTVLevelText()
+    {
+        tvLevelText.text = "Level " + GameData.currentLevel;
+    }
+
+    public static void UpdateTVPizzaText()
+    {
+        if (GameData.currentLevel != 0)
+        {
+            tvPizzaText.text = GameData.currentPizza.ToString();
+        }
+        else
+        {
+            tvPizzaText.text = "Start the game";
+        }
+    }
+
+    public static void StartGame()
+    {
+        playing = true;
+        GameData.SetNextLevel();
+        UpdateTVLevelText();
+        UpdateTVPizzaText();
     }
 }
