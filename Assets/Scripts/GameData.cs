@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class GameData
@@ -10,10 +11,10 @@ public static class GameData
 
    
    
-    static Ingredient[] margherita = { Ingredient.Dough, Ingredient.TomatoSauce, Ingredient.Cheese };
-    static Ingredient[] pepperoni = { Ingredient.Dough, Ingredient.TomatoSauce, Ingredient.Cheese, Ingredient.Pepperoni };
-    static Ingredient[] quattroFormaggi = { Ingredient.Dough, Ingredient.TomatoSauce, Ingredient.Cheese, Ingredient.BlueCheese };
-    static Ingredient[] diavola = { Ingredient.Dough, Ingredient.TomatoSauce, Ingredient.Cheese, Ingredient.RedPepper };
+    static Ingredient[] margherita = { Ingredient.Dough, Ingredient.Cheese, Ingredient.TomatoSauce };
+    static Ingredient[] pepperoni = { Ingredient.Dough, Ingredient.Cheese, Ingredient.TomatoSauce, Ingredient.Pepperoni };
+    static Ingredient[] quattroFormaggi = { Ingredient.Dough, Ingredient.Cheese, Ingredient.TomatoSauce, Ingredient.BlueCheese };
+    static Ingredient[] diavola = { Ingredient.Dough, Ingredient.Cheese, Ingredient.TomatoSauce, Ingredient.RedPepper };
 
     static Pizza[] level1 = { Pizza.Margherita };
     static Pizza[] level2 = { Pizza.Margherita, Pizza.Pepperoni };
@@ -41,6 +42,8 @@ public static class GameData
     public static int currentLevel = 0;
     public static Pizza currentPizza;
     public static Ingredient currentIngredient;
+    public static Ingredient[] currentIngredientList;
+    public static bool newPizzaStart = false;
 
     private static int currentPizzaIndex = 0;
 
@@ -76,5 +79,36 @@ public static class GameData
         }
         currentPizza = dummyPizzasPerLevel[currentPizzaIndex];
         currentPizzaIndex++;
+        SetCurrentIngredientList();
+    }
+
+    public static void SetCurrentIngredientList()
+    {
+        if (currentPizza == Pizza.Margherita) currentIngredientList = margherita;
+        if (currentPizza == Pizza.Pepperoni) currentIngredientList = pepperoni;
+        if (currentPizza == Pizza.QuattroFormaggi) currentIngredientList = quattroFormaggi;
+        if (currentPizza == Pizza.Diavola) currentIngredientList = diavola;
+        newPizzaStart = true;
+        SetCurrentIngredient();
+    }
+
+    public static void SetCurrentIngredient()
+    {
+        currentIngredient = currentIngredientList[0];
+    }
+
+    public static void PopIngredient()
+    {
+        foreach(var ingred in currentIngredientList) 
+        {
+            Debug.Log("INGREDIENTS: " + ingred);
+        }
+        currentIngredientList = currentIngredientList.Skip(1).ToArray();
+        HUD.PopIngredient();
+        if (currentIngredientList.Length == 0)
+        {
+            SetNextPizza();
+        }
+        SetCurrentIngredient();
     }
 }

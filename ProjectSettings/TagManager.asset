@@ -11,6 +11,8 @@ TagManager:
   - Ground
   - TVLevel
   - TVPizza
+  - HUD
+  - IngredientUI
   layers:
   - Default
   - TransparentFX

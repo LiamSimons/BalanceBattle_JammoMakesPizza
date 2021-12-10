@@ -8,6 +8,21 @@ public class HUD : MonoBehaviour
     [SerializeField]
     GameObject prefabHeart;
 
+    [SerializeField]
+    GameObject redPepperPrefab;
+    [SerializeField]
+    GameObject doughPrefab;
+    [SerializeField]
+    GameObject cheesePrefab;
+    [SerializeField]
+    GameObject mushroomPrefab;
+    [SerializeField]
+    GameObject blueCheesePrefab;
+    [SerializeField]
+    GameObject pepperoniPrefab;
+    [SerializeField]
+    GameObject tomatoSaucePrefab;
+
     static Text scoreText;
     static Text gameOverText;
     static Text tvLevelText;
@@ -37,6 +52,10 @@ public class HUD : MonoBehaviour
         //add score every 1 seconds
         //InvokeRepeating("addScoreText", 0, 1);
     }
+    private void Update()
+    {
+        DisplayCurrentIngredients();
+    }
 
     public static void addScoreText()
     {
@@ -65,7 +84,7 @@ public class HUD : MonoBehaviour
     {
         if(lives > 1)
         {
-            Debug.Log("LOSE LIFE");
+            //Debug.Log("LOSE LIFE");
             lives--;
             deleteHeart();
         }
@@ -129,11 +148,58 @@ public class HUD : MonoBehaviour
         }
     }
 
+    public void DisplayCurrentIngredients()
+    {
+        if (GameData.newPizzaStart)
+        {
+            //Debug.Log("DISPLAY INGREDIENTS BEFORE FOR");
+            int i = 0;
+            foreach (var ingredient in GameData.currentIngredientList)
+            {
+                //Debug.Log("DISPLAY INGREDEIENT " + i);
+                // instantiate all the ingredients
+                GameObject ingredientPrefab = InstantiateIngredient(ingredient);
+                ingredientPrefab.transform.parent = transform;
+                ingredientPrefab.transform.localPosition = new Vector3(300, 150 - 20 * i, 0);
+                i++;
+            }
+            GameData.newPizzaStart = false;
+            UpdateTVLevelText();
+            UpdateTVPizzaText();
+        }
+    }
+
+    public static void PopIngredient()
+    {
+        GameObject ingredientUI = GameObject.FindGameObjectWithTag("IngredientUI");
+        if (ingredientUI == null)
+        {
+            Debug.Log("INGREDIENT = NULLLLL");
+        }
+        else
+        {
+            //heart.GetComponent<Rigidbody2D>().AddForce(heart.transform.up * 2, ForceMode2D.Impulse);
+            Destroy(ingredientUI);
+        }
+    }
+
     public static void StartGame()
     {
         playing = true;
         GameData.SetNextLevel();
         UpdateTVLevelText();
         UpdateTVPizzaText();
+    }
+    private GameObject InstantiateIngredient(GameData.Ingredient ingredient)
+    {
+        //GameData.Ingredient dummyIngredient = GameData.currentIngredient;
+        if (ingredient == GameData.Ingredient.Dough) return Instantiate(doughPrefab); // ok
+        else if (ingredient == GameData.Ingredient.Cheese) return Instantiate(cheesePrefab); // ok
+        else if (ingredient == GameData.Ingredient.BlueCheese) return Instantiate(blueCheesePrefab);
+        else if (ingredient == GameData.Ingredient.TomatoSauce) return Instantiate(tomatoSaucePrefab);
+        else if (ingredient == GameData.Ingredient.RedPepper) return Instantiate(redPepperPrefab); // ok
+        else if (ingredient == GameData.Ingredient.Mushroom) return Instantiate(mushroomPrefab); // ok
+        else if (ingredient == GameData.Ingredient.Pepperoni) return Instantiate(pepperoniPrefab);
+        else return null;
     }
 }

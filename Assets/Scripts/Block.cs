@@ -100,6 +100,7 @@ public class Block : MonoBehaviour
                 //Debug.Log(transform.localToWorldMatrix.ToString());
                 Destroy(GetComponent<Rigidbody>());
                 HUD.addScoreText();
+                GameData.PopIngredient();
             }
         }
     }

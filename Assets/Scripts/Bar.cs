@@ -27,17 +27,17 @@ public class Bar : MonoBehaviour
             {
                 if (child.gameObject.transform.position.x < transform.position.x)
                 {
-                    Debug.Log("LEFT");
+                    //Debug.Log("LEFT");
                     //rotationBar.z -= 20 * 2 * Mathf.PI / 180;
                     //transform.Rotate(0, 0, 20);
                     amountLeft++;
                 }
                 else if(child.gameObject.transform.position.x == transform.position.x){
-                    Debug.Log("MIDDLE");
+                    //Debug.Log("MIDDLE");
                 }
                 else
                 {
-                    Debug.Log("RIGHT");
+                    //Debug.Log("RIGHT");
                     //rotationBar.z += 20;
                     amountRight++;
                 }
@@ -73,7 +73,7 @@ public class Bar : MonoBehaviour
             // oldRotation.Set(oldRotation.x, oldRotation.y+10*rotationBarFromHelm*Mathf.PI / 180, oldRotation.z, oldRotation.w);
 
             // oldRotation.y += 10*rotationBarFromHelm * Mathf.PI / 180;
-            Debug.Log("rotationBarFromHelm: " + rotationBarFromHelmet);
+            //Debug.Log("rotationBarFromHelm: " + rotationBarFromHelmet);
             // transform.rotation = oldRotation;//Quaternion.Euler(0, 0, 10*rotationBarFromHelm);
         }
     }

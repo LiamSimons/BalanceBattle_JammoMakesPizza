@@ -4,7 +4,13 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - prefabBlock: {fileID: 8412870733269810240, guid: aa65fe98efaff21499873be154af8a9e, type: 3}
+  - redPepperPrefab: {fileID: 2062222817618727417, guid: 45916d3224eb1254b8fd4759b9892b23, type: 3}
+  - doughPrefab: {fileID: 9015362390431310981, guid: e117a05da6b78da4a99fd030cb554468, type: 3}
+  - cheesePrefab: {fileID: 2315383939299417100, guid: 9ef83d7eb6b84c846b269a90448019ce, type: 3}
+  - mushroomPrefab: {fileID: 4697503002577256138, guid: 47d82095dd45d7140a1bfa45f4316c44, type: 3}
+  - blueCheesePrefab: {fileID: 4697503002577256138, guid: 47d82095dd45d7140a1bfa45f4316c44, type: 3}
+  - pepperoniPrefab: {fileID: 4697503002577256138, guid: 47d82095dd45d7140a1bfa45f4316c44, type: 3}
+  - tomatoSaucePrefab: {fileID: 4346190252886149876, guid: d0cf9ef59ca959342b8bc5a433ba20e5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

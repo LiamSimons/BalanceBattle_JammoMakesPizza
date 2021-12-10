@@ -5,6 +5,13 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - prefabHeart: {fileID: 5794123358965676073, guid: 2409009835e30b84ba098795c6cba2d2, type: 3}
+  - redPepperPrefab: {fileID: 2252324459608465672, guid: e116bdb8df74bfc45a673ecc29a17e0f, type: 3}
+  - doughPrefab: {fileID: 6558890989607936954, guid: 59d25050aac7ad04982d6b28a1165a9e, type: 3}
+  - cheesePrefab: {fileID: 2872042751855105306, guid: 1584e30b738ccfd4ebd10fe7aae21eec, type: 3}
+  - mushroomPrefab: {fileID: 4337204585709622994, guid: 4f220c4edc8771b479dd0656f1ec4af9, type: 3}
+  - blueCheesePrefab: {fileID: 5530161831724297902, guid: e25a4ab1ce194614a95a83d23e39ae12, type: 3}
+  - pepperoniPrefab: {fileID: 7948148705678059041, guid: 3f4bd3836c76d764dacd089edf1f8ec3, type: 3}
+  - tomatoSaucePrefab: {fileID: 5530161831724297902, guid: e25a4ab1ce194614a95a83d23e39ae12, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

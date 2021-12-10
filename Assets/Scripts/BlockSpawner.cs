@@ -6,7 +6,19 @@ using UnityEngine.SceneManagement;
 public class BlockSpawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject prefabBlock;
+    GameObject redPepperPrefab;
+    [SerializeField]
+    GameObject doughPrefab;
+    [SerializeField]
+    GameObject cheesePrefab;
+    [SerializeField]
+    GameObject mushroomPrefab;
+    [SerializeField]
+    GameObject blueCheesePrefab;
+    [SerializeField]
+    GameObject pepperoniPrefab;
+    [SerializeField]
+    GameObject tomatoSaucePrefab;
 
     Timer fallTimer;
 
@@ -81,8 +93,20 @@ public class BlockSpawner : MonoBehaviour
         float RandX = NextFloat(minX, maxX);
         float RandY = ScreenUtils.ScreenTop;
         Vector3 blockPos = new Vector3(RandX, RandY, 0);
-        GameObject block = Instantiate(prefabBlock);
+        GameObject block = InstantiateCurrentIngredient();
         block.transform.position = blockPos;
-        
+    }
+
+    private GameObject InstantiateCurrentIngredient()
+    {
+        GameData.Ingredient dummyIngredient = GameData.currentIngredient;
+        if (dummyIngredient == GameData.Ingredient.Dough) return Instantiate(doughPrefab); // ok
+        else if (dummyIngredient == GameData.Ingredient.Cheese) return Instantiate(cheesePrefab); // ok
+        else if (dummyIngredient == GameData.Ingredient.BlueCheese) return Instantiate(blueCheesePrefab); 
+        else if (dummyIngredient == GameData.Ingredient.TomatoSauce) return Instantiate(tomatoSaucePrefab); 
+        else if (dummyIngredient == GameData.Ingredient.RedPepper) return Instantiate(redPepperPrefab); // ok
+        else if (dummyIngredient == GameData.Ingredient.Mushroom) return Instantiate(mushroomPrefab); // ok
+        else if (dummyIngredient == GameData.Ingredient.Pepperoni) return Instantiate(pepperoniPrefab); 
+        else return null;
     }
 }
