@@ -377,7 +377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42, y: -35}
+  m_AnchoredPosition: {x: 62.7, y: -43.1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &162157879
@@ -1147,7 +1147,7 @@ MonoBehaviour:
   cheesePrefab: {fileID: 2315383939299417100, guid: 9ef83d7eb6b84c846b269a90448019ce, type: 3}
   mushroomPrefab: {fileID: 4697503002577256138, guid: 47d82095dd45d7140a1bfa45f4316c44, type: 3}
   blueCheesePrefab: {fileID: 4697503002577256138, guid: 47d82095dd45d7140a1bfa45f4316c44, type: 3}
-  pepperoniPrefab: {fileID: 4697503002577256138, guid: 47d82095dd45d7140a1bfa45f4316c44, type: 3}
+  pepperoniPrefab: {fileID: 5744039706119472431, guid: 563e61228edbed94e9cf3c17780c5189, type: 3}
   tomatoSaucePrefab: {fileID: 4346190252886149876, guid: d0cf9ef59ca959342b8bc5a433ba20e5, type: 3}
   minTime: 6
   maxTime: 8
@@ -1531,7 +1531,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 312, y: 158}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1213995311
 MonoBehaviour:
@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: df64b7d5285f29446adff5ce51db319a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b503a49a5353aa4b8ad8a083321e2da, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1619,7 +1619,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45, y: -0}
+  m_AnchoredPosition: {x: 65.3, y: -14.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1313383410
@@ -2113,7 +2113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45235a31449c8714ab0dc562c1bc1b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabPizza: {fileID: 0}
+  prefabPizza: {fileID: 6805810077213955943, guid: f0505ab13ed416a49a860afab8e74b7f, type: 3}
 --- !u!1001 &1686903814
 PrefabInstance:
   m_ObjectHideFlags: 0
