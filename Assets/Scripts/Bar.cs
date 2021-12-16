@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bar : MonoBehaviour
 {
+    [SerializeField]
+    GameObject prefabPizza;
+
     int children = 1;
     Quaternion startRotation;
     public static float rotationBarFromHelmet = 0.0f;
@@ -16,6 +19,26 @@ public class Bar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // check if all ingredients of the pizza are there to complete one
+        if (GameData.completePizza == true)
+        {
+            //Debug.Log("COMPLETE PIZZA");
+            foreach (Transform child in transform)
+            {
+                //Debug.Log("Child tag: " + child.tag);
+                if (child.tag == "Ingredient")
+                {
+                    Destroy(child.gameObject) ;
+                }
+            }
+            GameData.completePizza = false;
+            // instantiate complete pizza
+            Debug.Log("Making new Pizza");
+            GameObject completedPizza = Instantiate(prefabPizza);
+            Vector3 stackPosition = new Vector3(0, 1, 0);
+            completedPizza.transform.parent = transform;
+            completedPizza.transform.localPosition = stackPosition;
+        }
         if (transform.childCount != children)
         {
             //Debug.Log(transform.childCount);
@@ -74,7 +97,7 @@ public class Bar : MonoBehaviour
 
             // oldRotation.y += 10*rotationBarFromHelm * Mathf.PI / 180;
             //Debug.Log("rotationBarFromHelm: " + rotationBarFromHelmet);
-            // transform.rotation = oldRotation;//Quaternion.Euler(0, 0, 10*rotationBarFromHelm);
+            // transform.rotation = oldRotation;//Quaternion.Euler(0, 0, 10*rotationBarFromHelm 
         }
     }
 }

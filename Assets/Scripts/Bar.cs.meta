@@ -3,7 +3,8 @@ guid: 45235a31449c8714ab0dc562c1bc1b7d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - prefabPizza: {fileID: 6805810077213955943, guid: f0505ab13ed416a49a860afab8e74b7f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

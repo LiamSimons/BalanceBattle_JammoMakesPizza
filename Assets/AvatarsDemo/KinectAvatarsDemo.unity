@@ -2113,6 +2113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45235a31449c8714ab0dc562c1bc1b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabPizza: {fileID: 0}
 --- !u!1001 &1686903814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2725,6 +2726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45235a31449c8714ab0dc562c1bc1b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabPizza: {fileID: 0}
 --- !u!1 &2086377466
 GameObject:
   m_ObjectHideFlags: 0

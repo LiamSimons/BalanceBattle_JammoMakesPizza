@@ -44,6 +44,8 @@ public static class GameData
     public static Ingredient currentIngredient;
     public static Ingredient[] currentIngredientList;
     public static bool newPizzaStart = false;
+    public static bool completePizza = false;
+    public static int completedPizzas = 0;
 
     private static int currentPizzaIndex = 0;
 
@@ -80,6 +82,8 @@ public static class GameData
         currentPizza = dummyPizzasPerLevel[currentPizzaIndex];
         currentPizzaIndex++;
         SetCurrentIngredientList();
+        completePizza = true;
+        completedPizzas++;
     }
 
     public static void SetCurrentIngredientList()
@@ -95,14 +99,15 @@ public static class GameData
     public static void SetCurrentIngredient()
     {
         currentIngredient = currentIngredientList[0];
+        Debug.Log("Current ingredient: " + currentIngredient);
     }
 
     public static void PopIngredient()
     {
-        foreach(var ingred in currentIngredientList) 
+        /*foreach(var ingred in currentIngredientList) 
         {
             Debug.Log("INGREDIENTS: " + ingred);
-        }
+        }*/
         currentIngredientList = currentIngredientList.Skip(1).ToArray();
         HUD.PopIngredient();
         if (currentIngredientList.Length == 0)
