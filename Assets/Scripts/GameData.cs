@@ -82,7 +82,6 @@ public static class GameData
         currentPizza = dummyPizzasPerLevel[currentPizzaIndex];
         currentPizzaIndex++;
         SetCurrentIngredientList();
-        completePizza = true;
         completedPizzas++;
     }
 
@@ -113,6 +112,7 @@ public static class GameData
         if (currentIngredientList.Length == 0)
         {
             SetNextPizza();
+            completePizza = true;
         }
         SetCurrentIngredient();
     }

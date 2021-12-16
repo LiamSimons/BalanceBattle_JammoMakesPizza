@@ -123,7 +123,7 @@ public class HUD : MonoBehaviour
         {
             GameObject heart = Instantiate(prefabHeart);
             heart.transform.parent = transform;
-            heart.transform.localPosition = new Vector3(300 + heartOffset * i, 250, 0);
+            heart.transform.localPosition = new Vector3(100 + heartOffset * i, 200, 0);
         }
         gameOverTimer = gameObject.AddComponent<Timer>();
         gameOverTimer.Duration = 3f;
@@ -160,7 +160,7 @@ public class HUD : MonoBehaviour
                 // instantiate all the ingredients
                 GameObject ingredientPrefab = InstantiateIngredient(ingredient);
                 ingredientPrefab.transform.parent = transform;
-                ingredientPrefab.transform.localPosition = new Vector3(300, 150 - 20 * i, 0);
+                ingredientPrefab.transform.localPosition = new Vector3(300, 80 - 40 * i, 0);
                 i++;
             }
             GameData.newPizzaStart = false;

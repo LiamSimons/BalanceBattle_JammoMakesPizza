@@ -35,9 +35,12 @@ public class Bar : MonoBehaviour
             // instantiate complete pizza
             Debug.Log("Making new Pizza");
             GameObject completedPizza = Instantiate(prefabPizza);
-            Vector3 stackPosition = new Vector3(0, 1, 0);
-            completedPizza.transform.parent = transform;
+            Debug.Log("Pizza instantiated: " + completedPizza);
+            Vector3 newRotation = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
+            Vector3 stackPosition = new Vector3(0, -0.005f, 0);
+            completedPizza.transform.parent = gameObject.transform;
             completedPizza.transform.localPosition = stackPosition;
+            completedPizza.transform.eulerAngles = newRotation;
         }
         if (transform.childCount != children)
         {
@@ -48,21 +51,25 @@ public class Bar : MonoBehaviour
             int amountRight = 0;
             foreach (Transform child in transform)
             {
-                if (child.gameObject.transform.position.x < transform.position.x)
+                if (!(child.gameObject.tag == "Pizza"))
                 {
-                    //Debug.Log("LEFT");
-                    //rotationBar.z -= 20 * 2 * Mathf.PI / 180;
-                    //transform.Rotate(0, 0, 20);
-                    amountLeft++;
-                }
-                else if(child.gameObject.transform.position.x == transform.position.x){
-                    //Debug.Log("MIDDLE");
-                }
-                else
-                {
-                    //Debug.Log("RIGHT");
-                    //rotationBar.z += 20;
-                    amountRight++;
+                    if (child.gameObject.transform.position.x < transform.position.x)
+                    {
+                        //Debug.Log("LEFT");
+                        //rotationBar.z -= 20 * 2 * Mathf.PI / 180;
+                        //transform.Rotate(0, 0, 20);
+                        amountLeft++;
+                    }
+                    else if (child.gameObject.transform.position.x == transform.position.x)
+                    {
+                        //Debug.Log("MIDDLE");
+                    }
+                    else
+                    {
+                        //Debug.Log("RIGHT");
+                        //rotationBar.z += 20;
+                        amountRight++;
+                    }
                 }
             }
             children = transform.childCount;
