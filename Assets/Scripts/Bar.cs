@@ -10,10 +10,12 @@ public class Bar : MonoBehaviour
     int children = 1;
     Quaternion startRotation;
     public static float rotationBarFromHelmet = 0.0f;
+    BoxCollider box_Collider;
     // Start is called before the first frame update
     void Start()
     {
         startRotation = transform.rotation;
+        box_Collider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -37,10 +39,14 @@ public class Bar : MonoBehaviour
             GameObject completedPizza = Instantiate(prefabPizza);
             Debug.Log("Pizza instantiated: " + completedPizza);
             Vector3 newRotation = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
-            Vector3 stackPosition = new Vector3(0, -0.005f, 0);
+            Vector3 stackPosition = new Vector3(0, -0.001f*GameData.completedPizzas, 0);
             completedPizza.transform.parent = gameObject.transform;
             completedPizza.transform.localPosition = stackPosition;
             completedPizza.transform.eulerAngles = newRotation;
+
+            Vector3 newBoxSize = box_Collider.size;
+            newBoxSize.y = newBoxSize.y + 0.001f * GameData.completedPizzas;
+            box_Collider.size = newBoxSize;
         }
         if (transform.childCount != children)
         {
