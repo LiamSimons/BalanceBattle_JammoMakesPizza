@@ -39,7 +39,7 @@ public class Bar : MonoBehaviour
             GameObject completedPizza = Instantiate(prefabPizza);
             Debug.Log("Pizza instantiated: " + completedPizza);
             Vector3 newRotation = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
-            Vector3 stackPosition = new Vector3(0, -0.001f*GameData.completedPizzas, 0);
+            Vector3 stackPosition = new Vector3(0, -0.003f*GameData.completedPizzas, 0);
             completedPizza.transform.parent = gameObject.transform;
             completedPizza.transform.localPosition = stackPosition;
             completedPizza.transform.eulerAngles = newRotation;

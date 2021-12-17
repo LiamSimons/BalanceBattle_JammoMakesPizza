@@ -77,12 +77,12 @@ public class Block : MonoBehaviour
             {
                 //Debug.Log(contact.thisCollider.name + " hit " + contact.otherCollider.name +
                 //    " at [x = " + contact.point.x + "; y = " + contact.point.y + "; z = " + contact.point.z + "]");
-                if (contact.point.x < (positionX - 0.3 * sizeX * Mathf.Cos(rotationZ)))
+                if (contact.point.x < (positionX - 0.2 * sizeX * Mathf.Cos(rotationZ)))
                 {
                     leftHit = true;
                     leftX = contact.point.x;
                 }
-                else if (contact.point.x > (positionX + 0.3 * sizeX * Mathf.Cos(rotationZ)))
+                else if (contact.point.x > (positionX + 0.2 * sizeX * Mathf.Cos(rotationZ)))
                 {
                     rightHit = true;
                     rightX = contact.point.x;
