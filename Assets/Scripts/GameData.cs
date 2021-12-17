@@ -46,6 +46,7 @@ public static class GameData
     public static bool newPizzaStart = false;
     public static bool completePizza = false;
     public static int completedPizzas = 0;
+    public static bool angryLogHit = false;
 
     private static int currentPizzaIndex = 0;
 
@@ -115,5 +116,10 @@ public static class GameData
             completePizza = true;
         }
         SetCurrentIngredient();
+    }
+
+    public static void resetToFirstIngredient()
+    {
+        SetCurrentIngredientList();
     }
 }

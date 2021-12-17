@@ -19,6 +19,8 @@ public class BlockSpawner : MonoBehaviour
     GameObject pepperoniPrefab;
     [SerializeField]
     GameObject tomatoSaucePrefab;
+    [SerializeField]
+    GameObject angryLogPrefab;
 
     Timer fallTimer;
 
@@ -93,7 +95,16 @@ public class BlockSpawner : MonoBehaviour
         float RandX = NextFloat(minX, maxX);
         float RandY = ScreenUtils.ScreenTop;
         Vector3 blockPos = new Vector3(RandX, RandY, 0);
-        GameObject block = InstantiateCurrentIngredient();
+        float angryLogChance = NextFloat(0, 1);
+        GameObject block;
+        if (angryLogChance > 0.1)
+        {
+            block = InstantiateCurrentIngredient();
+        }
+        else
+        {
+            block = Instantiate(angryLogPrefab);
+        }
         block.transform.position = blockPos;
     }
 

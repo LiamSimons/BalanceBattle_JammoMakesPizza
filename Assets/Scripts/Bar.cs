@@ -21,6 +21,24 @@ public class Bar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameData.angryLogHit)
+        {
+            foreach(Transform child in transform)
+            {
+                if(child.tag == "Ingredient")
+                {
+                    Destroy(child.gameObject);
+                }
+                else if(child.tag == "Pizza")
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+            Vector3 newBoxSize = box_Collider.size;
+            newBoxSize.y = newBoxSize.y + 0.001f * GameData.completedPizzas;
+            box_Collider.size = newBoxSize;
+            GameData.angryLogHit = false;
+        }
         // check if all ingredients of the pizza are there to complete one
         if (GameData.completePizza == true)
         {

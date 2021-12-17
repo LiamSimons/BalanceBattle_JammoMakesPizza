@@ -56,6 +56,7 @@ public class ArduinoComm : MonoBehaviour
             Console.WriteLine("data received, raw print:" + Encoding.ASCII.GetString(DataIn));
             // Thread.Sleep(500); //TODO: comment this out
         }
+        udpClientB.Close();
     }
 
     public static void StartReceive()
@@ -79,6 +80,7 @@ public class ArduinoComm : MonoBehaviour
             // Console.WriteLine("one message sent");
             Thread.Sleep(200);
         }
+        udpClientA.Close();
     }
 
     public static void StartSend()
