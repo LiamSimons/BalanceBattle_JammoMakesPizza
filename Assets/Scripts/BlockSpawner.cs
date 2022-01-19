@@ -105,7 +105,7 @@ public class BlockSpawner : MonoBehaviour
         Vector3 blockPos = new Vector3(RandX, RandY, 0);
         float angryLogChance = NextFloat(0, 1);
         GameObject block;
-        if (angryLogChance > (0.1*(GameData.currentLevel)))
+        if (angryLogChance > (0.05*(GameData.currentLevel)))
         {
             block = InstantiateCurrentIngredient();
         }
@@ -118,7 +118,16 @@ public class BlockSpawner : MonoBehaviour
 
     private GameObject InstantiateCurrentIngredient()
     {
-        GameData.Ingredient dummyIngredient = GameData.currentIngredient;
+        System.Random random = new System.Random();
+        float otherIngredient = NextFloat(0, 1);
+        GameData.Ingredient dummyIngredient;
+        if (otherIngredient < 0.05 * (GameData.currentLevel))
+        {
+            int randIngredientIndex = random.Next(0, GameData.currentIngredientList.Length);
+            dummyIngredient = GameData.currentIngredientList[randIngredientIndex];
+        }
+        else dummyIngredient = GameData.currentIngredient;
+        
         if (dummyIngredient == GameData.Ingredient.Dough) return Instantiate(doughPrefab); // ok
         else if (dummyIngredient == GameData.Ingredient.Cheese) return Instantiate(cheesePrefab); // ok
         else if (dummyIngredient == GameData.Ingredient.BlueCheese) return Instantiate(blueCheesePrefab); 

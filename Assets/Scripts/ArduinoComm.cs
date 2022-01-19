@@ -34,7 +34,8 @@ public class ArduinoComm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int dataouttemp = (int) Bar.rotationBarFromHelmet*1000;
+        Debug.Log("HIERZO: " + Bar.rotationBarFromHelmet);
+        int dataouttemp = (int) Bar.rotationBarFromHelmet*-180;
         ArduinoComm.DataOut = Encoding.ASCII.GetBytes(dataouttemp.ToString());
         Helmet.rotationHelmetFromWorld = Int32.Parse(Encoding.ASCII.GetString(ArduinoComm.DataIn)); //TODO: fix constants
         //Debug.Log(Helmet.rotationHelmetFromWorld);

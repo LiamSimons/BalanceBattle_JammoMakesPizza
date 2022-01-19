@@ -16,6 +16,6 @@ public class Helmet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(new Vector3(0,0, (-rotationHelmetFromWorld*2+88)));
+        transform.rotation = Quaternion.Euler(new Vector3(0,0, (-rotationHelmetFromWorld+88)*2));
     }
 }

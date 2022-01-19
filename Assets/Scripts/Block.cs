@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor;
 
 public class Block : MonoBehaviour
 {
@@ -11,6 +12,15 @@ public class Block : MonoBehaviour
     List<ContactPoint> pointx = new List<ContactPoint>();
     private bool finished = false;
     // Start is called before the first frame update
+
+/*    private GameData.Ingredient ingredientType;
+    public GameData.Ingredient IngredientType
+    {
+        set
+        {
+            ingredientType = value;
+        }
+    }*/
     void Start()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
@@ -58,16 +68,31 @@ public class Block : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+
         if(collision.gameObject.tag == "Ground")
         {
+            Debug.Log("ground touched");
+            Debug.Log(GameData.checkString(gameObject.name));
+            if (GameData.checkString(gameObject.name)) //check if current object on ground is the wnted ingredient
+            {
+                Debug.Log("object on ground is current ing");
+                HUD.loseHeart();
+            }
+            Destroy(gameObject);
+
+        }
+        else if (collision.gameObject.tag == "Player" && !GameData.checkString(gameObject.name)) //if caught on player on ingredient is wrong, delete and lose heart
+        {
+            Debug.Log("object on player is not current ing");
             Destroy(gameObject);
             HUD.loseHeart();
         }
+       //Debug.Log("ONCOLLISIONENTER" + collision.gameObject.tag);
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (!finished)
+        if (!finished && collision.gameObject.tag == "Player")
         {
             float positionX = transform.position.x;
             float rotationZ = transform.rotation.z;
@@ -106,7 +131,7 @@ public class Block : MonoBehaviour
                 HUD.addScoreText();
                 GameData.PopIngredient();
 
-                GameObject particle = Instantiate<GameObject>(particleEffect);
+                //GameObject particle = Instantiate<GameObject>(particleEffect);
             }
         }
     }

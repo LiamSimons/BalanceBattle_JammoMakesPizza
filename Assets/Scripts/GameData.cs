@@ -22,6 +22,18 @@ public static class GameData
     static Pizza[] level4 = { Pizza.Diavola, Pizza.QuattroFormaggi, Pizza.Diavola, Pizza.Pepperoni };
     static Pizza[] level5 = { Pizza.QuattroFormaggi, Pizza.Pepperoni, Pizza.Margherita, Pizza.QuattroFormaggi, Pizza.Diavola };
 
+    static string[] ingredientStrings = { "RedPepper", "Mushroom", "Cheese", "Tomato", "Dough", "Pepperoni" };
+
+    public static readonly Dictionary<string, Ingredient> ignredientString = new Dictionary<string, Ingredient>
+    {
+        {"RedPepper", Ingredient.RedPepper },
+        {"Mushroom", Ingredient.Mushroom },
+        {"Cheese", Ingredient.Cheese },
+        {"Tomato", Ingredient.TomatoSauce },
+        {"Dough", Ingredient.Dough },
+        {"Pepperoni", Ingredient.Pepperoni }
+    };
+
     public static readonly Dictionary<Pizza, Ingredient[]> ingredientsOfPizza = new Dictionary<Pizza, Ingredient[]> 
     {
         { Pizza.Margherita, margherita },
@@ -39,7 +51,7 @@ public static class GameData
     };
 
     //
-    public static int currentLevel = 4;
+    public static int currentLevel = 0;
     public static Pizza currentPizza;
     public static Ingredient currentIngredient;
     public static Ingredient[] currentIngredientList;
@@ -121,5 +133,25 @@ public static class GameData
     public static void resetToFirstIngredient()
     {
         SetCurrentIngredientList();
+    }
+
+    public static bool checkString (string ing)
+    {
+        ing = ing.ToLower();
+        Debug.Log(ing);
+        foreach (string x in ingredientStrings)
+        {
+            Debug.Log("in forloop");
+            string lowerX = x.ToLower();
+            //Debug.Log(lowerX);
+            Debug.Log(ing.Contains(lowerX));
+            if (ing.Contains(lowerX))
+            {
+                Debug.Log("Key value" + ignredientString[x]);
+                if (ignredientString[x] == currentIngredient) return true;
+
+            }
+        }
+        return false;
     }
 }

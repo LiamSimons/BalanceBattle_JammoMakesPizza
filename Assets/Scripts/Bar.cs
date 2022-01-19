@@ -14,6 +14,7 @@ public class Bar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         startRotation = transform.rotation;
         box_Collider = GetComponent<BoxCollider>();
     }
@@ -23,13 +24,13 @@ public class Bar : MonoBehaviour
     {
         if (GameData.angryLogHit)
         {
-            foreach(Transform child in transform)
+            foreach (Transform child in transform)
             {
-                if(child.tag == "Ingredient")
+                if (child.tag == "Ingredient")
                 {
                     Destroy(child.gameObject);
                 }
-                else if(child.tag == "Pizza")
+                else if (child.tag == "Pizza")
                 {
                     Destroy(child.gameObject);
                 }
@@ -48,7 +49,7 @@ public class Bar : MonoBehaviour
                 //Debug.Log("Child tag: " + child.tag);
                 if (child.tag == "Ingredient")
                 {
-                    Destroy(child.gameObject) ;
+                    Destroy(child.gameObject);
                 }
             }
             GameData.completePizza = false;
@@ -57,7 +58,7 @@ public class Bar : MonoBehaviour
             GameObject completedPizza = Instantiate(prefabPizza);
             Debug.Log("Pizza instantiated: " + completedPizza);
             Vector3 newRotation = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
-            Vector3 stackPosition = new Vector3(0, -0.003f*GameData.completedPizzas, 0);
+            Vector3 stackPosition = new Vector3(0, -0.003f * GameData.completedPizzas, 0);
             completedPizza.transform.parent = gameObject.transform;
             completedPizza.transform.localPosition = stackPosition;
             completedPizza.transform.eulerAngles = newRotation;
@@ -68,61 +69,119 @@ public class Bar : MonoBehaviour
         }
         if (transform.childCount != children)
         {
+            //Debug.Log(box_Collider.size.x);
             //Debug.Log(transform.childCount);
             //Quaternion rotationBar = transform.rotation;
             //Debug.Log("CHILDREN" + transform.childCount);
             int amountLeft = 0;
             int amountRight = 0;
+            //foreach (Transform child in transform)
+            //{
+            //    if (!(child.gameObject.tag == "Pizza"))
+            //    {
+            //        if (child.gameObject.transform.position.x < transform.position.x)
+            //        {
+            //            //Debug.Log("LEFT");
+            //            //rotationBar.z -= 20 * 2 * Mathf.PI / 180;
+            //            //transform.Rotate(0, 0, 20);
+            //            amountLeft++;
+            //        }
+            //        else if (child.gameObject.transform.position.x == transform.position.x)
+            //        {
+            //            //Debug.Log("MIDDLE");
+            //        }
+            //        else
+            //        {
+            //            //Debug.Log("RIGHT");
+            //            //rotationBar.z += 20;
+            //            amountRight++;
+            //        }
+            //    }
+            //}
+            //children = transform.childCount;
+
+            //if(amountLeft == 0)
+            //{
+            //    if(amountRight == 0)
+            //    {
+            //        rotationBarFromHelmet = 0;
+            //    }
+            //    else
+            //    {
+            //        rotationBarFromHelmet = -amountRight;
+            //    }
+            //}
+            //else
+            //{
+            //    if(amountRight == 0)
+            //    {
+            //        rotationBarFromHelmet = amountLeft;
+            //    }
+            //    else
+            //    {
+            //        rotationBarFromHelmet = (amountLeft / amountRight) - 1;
+            //    }
+            //}
+            // Quaternion oldRotation = transform.rotation;
+            float x_size = box_Collider.size.x;
+            float ratio = 0;
             foreach (Transform child in transform)
             {
-                if (!(child.gameObject.tag == "Pizza"))
-                {
-                    if (child.gameObject.transform.position.x < transform.position.x)
-                    {
-                        //Debug.Log("LEFT");
-                        //rotationBar.z -= 20 * 2 * Mathf.PI / 180;
-                        //transform.Rotate(0, 0, 20);
-                        amountLeft++;
-                    }
-                    else if (child.gameObject.transform.position.x == transform.position.x)
-                    {
-                        //Debug.Log("MIDDLE");
-                    }
-                    else
-                    {
-                        //Debug.Log("RIGHT");
-                        //rotationBar.z += 20;
-                        amountRight++;
-                    }
-                }
+                ratio += 3 * (transform.position.x - child.gameObject.transform.position.x) / x_size;
             }
-            children = transform.childCount;
+            rotationBarFromHelmet = ratio;
+            //Debug.Log(ratio);
+            //foreach (Transform child in transform)
+            //{
+            //    if (!(child.gameObject.tag == "Pizza"))
+            //    {
+            //        if (child.gameObject.transform.position.x < transform.position.x)
+            //        {
+            //            //Debug.Log("LEFT");
+            //            //rotationBar.z -= 20 * 2 * Mathf.PI / 180;
+            //            //transform.Rotate(0, 0, 20);
+            //            amountLeft++;
+            //        }
+            //        else if (child.gameObject.transform.position.x == transform.position.x)
+            //        {
+            //            //Debug.Log("MIDDLE");
+            //        }
+            //        else
+            //        {
+            //            //Debug.Log("RIGHT");
+            //            //rotationBar.z += 20;
+            //            amountRight++;
+            //        }
+            //    }
+            //}
+            //children = transform.childCount;
 
-            if(amountLeft == 0)
-            {
-                if(amountRight == 0)
-                {
-                    rotationBarFromHelmet = 0;
-                }
-                else
-                {
-                    rotationBarFromHelmet = -amountRight;
-                }
-            }
-            else
-            {
-                if(amountRight == 0)
-                {
-                    rotationBarFromHelmet = amountLeft;
-                }
-                else
-                {
-                    rotationBarFromHelmet = (amountLeft / amountRight) - 1;
-                }
-            }
-            // Quaternion oldRotation = transform.rotation;
+            //if (amountLeft == 0)
+            //{
+            //    if (amountRight == 0)
+            //    {
+            //        rotationBarFromHelmet = 0;
+            //    }
+            //    else
+            //    {
+            //        rotationBarFromHelmet = -amountRight;
+            //    }
+            //}
+            //else
+            //{
+            //    if (amountRight == 0)
+            //    {
+            //        rotationBarFromHelmet = amountLeft;
+            //    }
+            //    else
+            //    {
+            //        rotationBarFromHelmet = (amountLeft / amountRight) - 1;
+            //    }
+            //}
 
-            transform.rotation =  startRotation*Quaternion.Euler(Vector3.back * -10*rotationBarFromHelmet);
+
+            //transform.rotation =  startRotation*Quaternion.Euler(Vector3.back * -10*rotationBarFromHelmet);
+            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation * Quaternion.Euler(Vector3.back * -1 * rotationBarFromHelmet), Time.deltaTime * 10);
 
             // oldRotation.Set(oldRotation.x, oldRotation.y+10*rotationBarFromHelm*Mathf.PI / 180, oldRotation.z, oldRotation.w);
 
