@@ -25,9 +25,12 @@ public class BlockSpawner : MonoBehaviour
     Timer fallTimer;
 
     [SerializeField]
-    float minTime = 1;
+    float minTime = 6;
     [SerializeField]
-    float maxTime = 4;
+    float maxTime = 8;
+
+    float scaledMinTime;
+    float scaledMaxTime;
 
     [SerializeField]
     float minX;
@@ -62,6 +65,11 @@ public class BlockSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        scaledMinTime = minTime;
+        scaledMaxTime = maxTime;
+        scaledMinTime -= GameData.currentLevel / 2;
+        scaledMaxTime -= GameData.currentLevel / 2;
         if (HUD.playing)
         {
             if (fallTimer.Finished)
@@ -69,7 +77,7 @@ public class BlockSpawner : MonoBehaviour
                 //spawn een bal en begin opnieuw
                 spawnBlock();
                 //
-                fallTimer.Duration = NextFloat(minTime, maxTime);
+                fallTimer.Duration = NextFloat(scaledMinTime, scaledMaxTime);
                 fallTimer.Run();
             }
         }
@@ -97,7 +105,7 @@ public class BlockSpawner : MonoBehaviour
         Vector3 blockPos = new Vector3(RandX, RandY, 0);
         float angryLogChance = NextFloat(0, 1);
         GameObject block;
-        if (angryLogChance > 0.1)
+        if (angryLogChance > (0.1*(GameData.currentLevel)))
         {
             block = InstantiateCurrentIngredient();
         }

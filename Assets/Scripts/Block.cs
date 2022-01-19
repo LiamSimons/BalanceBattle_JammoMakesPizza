@@ -5,12 +5,16 @@ using System;
 
 public class Block : MonoBehaviour
 {
+    [SerializeField]
+    GameObject particleEffect;
+
     List<ContactPoint> pointx = new List<ContactPoint>();
     private bool finished = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.drag -= GameData.currentLevel * 3;
     }
 
     // Update is called once per frame
@@ -101,6 +105,8 @@ public class Block : MonoBehaviour
                 Destroy(GetComponent<Rigidbody>());
                 HUD.addScoreText();
                 GameData.PopIngredient();
+
+                GameObject particle = Instantiate<GameObject>(particleEffect);
             }
         }
     }

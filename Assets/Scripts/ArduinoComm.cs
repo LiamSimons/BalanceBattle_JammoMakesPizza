@@ -76,7 +76,7 @@ public class ArduinoComm : MonoBehaviour
                 buf = DataOut;
             }
 
-            udpClientA.Send(buf, buf.Length, "192.168.137.255", portNrSend);
+            udpClientA.Send(buf, buf.Length, "192.168.137.137", portNrSend);
             // Console.WriteLine("one message sent");
             Thread.Sleep(200);
         }

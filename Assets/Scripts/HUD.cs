@@ -153,7 +153,7 @@ public class HUD : MonoBehaviour
         if (GameData.newPizzaStart)
         {
             //Debug.Log("DISPLAY INGREDIENTS BEFORE FOR");
-            int i = 0;
+            /*int i = 0;
             foreach (var ingredient in GameData.currentIngredientList)
             {
                 //Debug.Log("DISPLAY INGREDEIENT " + i);
@@ -162,7 +162,11 @@ public class HUD : MonoBehaviour
                 ingredientPrefab.transform.parent = transform;
                 ingredientPrefab.transform.localPosition = new Vector3(300, 80 - 40 * i, 0);
                 i++;
-            }
+            }*/
+            GameData.Ingredient ingredient = GameData.currentIngredient;
+            GameObject ingredientPrefab = InstantiateIngredient(ingredient);
+            ingredientPrefab.transform.parent = transform;
+            ingredientPrefab.transform.localPosition = new Vector3(300, 80, 0);
             GameData.newPizzaStart = false;
             UpdateTVLevelText();
             UpdateTVPizzaText();

@@ -39,7 +39,7 @@ public static class GameData
     };
 
     //
-    public static int currentLevel = 0;
+    public static int currentLevel = 4;
     public static Pizza currentPizza;
     public static Ingredient currentIngredient;
     public static Ingredient[] currentIngredientList;
