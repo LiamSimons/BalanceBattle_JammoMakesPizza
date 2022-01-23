@@ -325,6 +325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01759bb7effafdd4fada605372bdf351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleEffect: {fileID: 0}
+  saw: {fileID: 8300000, guid: d321980a63149e94689e67d3049e926a, type: 3}
 --- !u!1 &8425472324923486189
 GameObject:
   m_ObjectHideFlags: 0

@@ -127,7 +127,9 @@ public class Bar : MonoBehaviour
             float ratio = 0;
             foreach (Transform child in transform)
             {
-                ratio += 3 * (transform.position.x - child.gameObject.transform.position.x) / x_size;
+                //ratio += 3 * (transform.position.x - child.gameObject.transform.position.x) / x_size;
+                //Debug.Log(x_size);
+                ratio += 30 * (child.gameObject.transform.localPosition.x)/(x_size/2);
             }
             rotationBarFromHelmet = ratio;
             //Debug.Log(ratio);
@@ -181,7 +183,7 @@ public class Bar : MonoBehaviour
 
 
             //transform.rotation =  startRotation*Quaternion.Euler(Vector3.back * -10*rotationBarFromHelmet);
-            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation * Quaternion.Euler(Vector3.back * -1 * rotationBarFromHelmet), Time.deltaTime * 10);
+            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation * Quaternion.Euler(Vector3.back * -1 * (rotationBarFromHelmet-((Helmet.rotationHelmetFromWorld + 88) * 2)) ), Time.deltaTime * 10);
 
             // oldRotation.Set(oldRotation.x, oldRotation.y+10*rotationBarFromHelm*Mathf.PI / 180, oldRotation.z, oldRotation.w);
 

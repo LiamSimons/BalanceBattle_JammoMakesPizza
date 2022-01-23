@@ -128,6 +128,7 @@ public static class GameData
             completePizza = true;
         }
         SetCurrentIngredient();
+        newPizzaStart = true;
     }
 
     public static void resetToFirstIngredient()
@@ -138,16 +139,16 @@ public static class GameData
     public static bool checkString (string ing)
     {
         ing = ing.ToLower();
-        Debug.Log(ing);
+        //Debug.Log(ing);
         foreach (string x in ingredientStrings)
         {
-            Debug.Log("in forloop");
+            //Debug.Log("in forloop");
             string lowerX = x.ToLower();
             //Debug.Log(lowerX);
-            Debug.Log(ing.Contains(lowerX));
+            //Debug.Log(ing.Contains(lowerX));
             if (ing.Contains(lowerX))
             {
-                Debug.Log("Key value" + ignredientString[x]);
+                //Debug.Log("Key value" + ignredientString[x]);
                 if (ignredientString[x] == currentIngredient) return true;
 
             }

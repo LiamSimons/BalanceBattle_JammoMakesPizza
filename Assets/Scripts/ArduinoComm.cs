@@ -34,8 +34,9 @@ public class ArduinoComm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("HIERZO: " + Bar.rotationBarFromHelmet);
-        int dataouttemp = (int) Bar.rotationBarFromHelmet*-180;
+        //Debug.Log("HIERZO: " + Bar.rotationBarFromHelmet);
+        int dataouttemp = (int) (Bar.rotationBarFromHelmet*-180000*0.0283/20);
+        //Debug.Log(dataouttemp);
         ArduinoComm.DataOut = Encoding.ASCII.GetBytes(dataouttemp.ToString());
         Helmet.rotationHelmetFromWorld = Int32.Parse(Encoding.ASCII.GetString(ArduinoComm.DataIn)); //TODO: fix constants
         //Debug.Log(Helmet.rotationHelmetFromWorld);
@@ -77,7 +78,7 @@ public class ArduinoComm : MonoBehaviour
                 buf = DataOut;
             }
 
-            udpClientA.Send(buf, buf.Length, "192.168.137.137", portNrSend);
+            udpClientA.Send(buf, buf.Length, "192.168.43.133", portNrSend);
             // Console.WriteLine("one message sent");
             Thread.Sleep(200);
         }

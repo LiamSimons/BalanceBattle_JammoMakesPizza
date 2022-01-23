@@ -11,20 +11,24 @@ public class Block : MonoBehaviour
 
     List<ContactPoint> pointx = new List<ContactPoint>();
     private bool finished = false;
+
+    public AudioClip saw;
     // Start is called before the first frame update
 
-/*    private GameData.Ingredient ingredientType;
-    public GameData.Ingredient IngredientType
-    {
-        set
+    /*    private GameData.Ingredient ingredientType;
+        public GameData.Ingredient IngredientType
         {
-            ingredientType = value;
-        }
-    }*/
+            set
+            {
+                ingredientType = value;
+            }
+        }*/
     void Start()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.drag -= GameData.currentLevel * 3;
+        GetComponent<AudioSource>().playOnAwake = false;
+        GetComponent<AudioSource>().clip = saw;
     }
 
     // Update is called once per frame
@@ -71,11 +75,11 @@ public class Block : MonoBehaviour
 
         if(collision.gameObject.tag == "Ground")
         {
-            Debug.Log("ground touched");
-            Debug.Log(GameData.checkString(gameObject.name));
+            //Debug.Log("ground touched");
+            //Debug.Log(GameData.checkString(gameObject.name));
             if (GameData.checkString(gameObject.name)) //check if current object on ground is the wnted ingredient
             {
-                Debug.Log("object on ground is current ing");
+                //Debug.Log("object on ground is current ing");
                 HUD.loseHeart();
             }
             Destroy(gameObject);
@@ -83,7 +87,7 @@ public class Block : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Player" && !GameData.checkString(gameObject.name)) //if caught on player on ingredient is wrong, delete and lose heart
         {
-            Debug.Log("object on player is not current ing");
+            //Debug.Log("object on player is not current ing");
             Destroy(gameObject);
             HUD.loseHeart();
         }
@@ -132,6 +136,8 @@ public class Block : MonoBehaviour
                 GameData.PopIngredient();
 
                 //GameObject particle = Instantiate<GameObject>(particleEffect);
+                GetComponent<AudioSource>().Play();
+                Debug.Log("SOUNDEFFECTTTTTTTTTTTTTTTTTTT");
             }
         }
     }
